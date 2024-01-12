@@ -1,5 +1,7 @@
 # Pokemon TCG Card detector using OpenCV
 
+![Pokecard Detector](preview_pokecard_detector.png)
+
 ## Description
 
 This project is a Pokemon TCG card detector using OpenCV. It is based on the Pokemon TCG API. The goal is to detect the card and then use the API to get the card information.
