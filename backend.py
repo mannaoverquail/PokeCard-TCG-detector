@@ -93,7 +93,7 @@ rect_color = (0, 255, 0)
 border = 2
 
 
-def capture_image():
+def capture_image() -> Image or None:
     """
     Capture an image from the camera.
 
@@ -231,13 +231,10 @@ def about():
 
 def generate_frames():
     while True:
-        # Capture a frame from the camera
         success, frame = cap.read()
         if not success:
             break
         else:
-            # Perform any necessary image processing here
-            # In this example, we only display the captured frame
             ret, buffer = cv2.imencode(".jpg", frame)
             if not ret:
                 continue
@@ -247,8 +244,6 @@ def generate_frames():
 
 @app.route("/video_feed")
 def video_feed():
-    filter_type = request.args.get("filter")
-
     def generate():
         while True:
             success, frame = cap.read()
@@ -263,10 +258,6 @@ def video_feed():
             )
             if not success:
                 break
-            if filter_type == "grayscale":
-                frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            elif filter_type == "blur":
-                frame = cv2.GaussianBlur(frame, (15, 15), 0)
 
             ret, buffer = cv2.imencode(".jpg", frame)
             if not ret:
