@@ -61,7 +61,7 @@ def adjust_query(query: str) -> str:
         str: The adjusted search query with 'name:"NOMBRE"' format if 'name:"nombre"' format is found,
              or with 'name:NOMBRE' format if 'name:nombre' format is found, preserving other Lucene operators.
     """
-    first_query = query.split()
+    first_query = query.split()[0]
     if "name:" not in query and ":" not in first_query:
         query = query[0].upper() + query[1:]
         query = f"name:{query}"
@@ -332,30 +332,6 @@ def wavelet():
         render_template(
             "pokemon_card.html",
             pokemon=similar_card,
-        ),
-        200,
-    )
-
-
-@app.route("/color_hash")
-def color_hash():
-    img = capture_image()
-    if img is None:
-        return Response(status=204)
-
-    similar_cards = get_most_similar(img, "color", 10)
-
-    similar_card_list = []
-    for id in similar_cards:
-        similar_card = Card.find(id)
-        print_stats(similar_card)
-        similar_card_list.append(similar_card)
-
-    # Provide htmx with the new card
-    return (
-        render_template(
-            "pokemon_card_list.html",
-            pokemones=similar_card_list,
         ),
         200,
     )
