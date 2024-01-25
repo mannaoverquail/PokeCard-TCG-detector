@@ -1,11 +1,7 @@
-import re
 from flask import Flask, render_template, request, Response, redirect, url_for
 import cv2
-import numpy as np
 import imagehash
 from PIL import Image
-from io import BytesIO
-import requests
 import pandas as pd
 from urllib.parse import urlparse, parse_qs
 
@@ -15,7 +11,7 @@ from pokemontcgmanager.card import Card
 # Helper Functions
 
 
-def print_stats(card):
+def print_stats(card: dict):
     """
     Print basic statistics of a Pokémon card.
 
@@ -30,7 +26,7 @@ def print_stats(card):
     )
 
 
-def get_hashes(img):
+def get_hashes(img: dict) -> dict:
     """
     Calculate various types of hashes for an image.
 
@@ -50,24 +46,6 @@ def get_hashes(img):
         "wavelet": wavelet,
         "color": color,
     }
-
-
-def get_img_by_url(url):
-    """
-    Get an image from a URL.
-
-    Args:
-        url (str): URL of the image.
-
-    Returns:
-        np.ndarray: Image in NumPy format.
-    """
-    response = requests.get(url)
-    if response.status_code == 200:
-        img_data = BytesIO(response.content)
-        image = cv2.imdecode(np.frombuffer(img_data.read(), np.uint8), cv2.IMREAD_COLOR)
-
-    return image
 
 
 def adjust_query(query: str) -> str:
