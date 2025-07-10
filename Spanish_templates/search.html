@@ -6,11 +6,11 @@
     <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24">
         <div class="text-center">
             <h1 class="text-4xl sm:text-6xl font-bold text-gray-800 dark:text-gray-200">
-                Search for cards
+                Búsqueda de cartas
             </h1>
 
             <p class="mt-3 text-gray-600 dark:text-gray-400">
-                Search for cards by name, type, rarity, etc. with the syntax of <a class="text-blue-500 hover:underline"
+                Busca cartas por nombre, tipo, rareza, etc. con la sintaxis de <a class="text-blue-500 hover:underline"
                     target="_blank" href="https://lucenetutorial.com/lucene-query-syntax.html">Lucene</a>
             </p>
 
@@ -21,7 +21,7 @@
                         class="relative z-10 flex space-x-3 p-3 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-slate-900 dark:border-gray-700 dark:shadow-gray-900/[.2]">
                         <div class="flex-[1_0_0%]">
                             <label for="search" class="block text-sm text-gray-700 font-medium dark:text-white"><span
-                                    class="sr-only">Search for cards</span></label>
+                                    class="sr-only">Buscar cartas</span></label>
                             <input type="text" name="search" id="search"
                                 class="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-transparent dark:text-gray-400 dark:focus:ring-gray-600"
                                 placeholder="Busca tus cartas" />
@@ -68,11 +68,11 @@
 
             <div class="mt-10">
                 <div class="flex flex-wrap justify-center">
-                    <p>You can try with <a class="text-teal-400 hover:underline"
+                    <p>Puedes probar con <a class="text-teal-400 hover:underline"
                             href="/cards?q=name:Goodra">"goodra"</a> o <a class="text-teal-400 hover:underline"
-                            href="/cards?q=subtypes:mega">"subtypes:mega"</a> or simply <a
-                            class="text-teal-400 hover:underline" href="{{ url_for('detect_card') }}">scan your
-                            cards</a></p>
+                            href="/cards?q=subtypes:mega">"subtypes:mega"</a> o simplemente <a
+                            class="text-teal-400 hover:underline" href="{{ url_for('detect_card') }}">escanea tus
+                            cartas</a></p>
                 </div>
             </div>
         </div>
